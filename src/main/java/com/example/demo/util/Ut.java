@@ -3,7 +3,11 @@ package com.example.demo.util;
 import java.lang.reflect.Array;
 import java.util.Map;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class Ut {
+	private static final ObjectMapper objectMapper = new ObjectMapper();
 
 	public static String f(String format, Object... args) {
 		return String.format(format, args);
@@ -16,6 +20,10 @@ public class Ut {
 	public static boolean isEmpty(Object obj) {
 		if (obj == null) {
 			return true;
+		}
+
+		if (obj instanceof Integer) {
+			return (int) obj == 0;
 		}
 
 		if (obj instanceof String) {
@@ -75,6 +83,16 @@ public class Ut {
 					location.replace('%s');
 				</script>
 				""", resultMsg, replaceUri);
+	}
+
+	public static String toJsonString(Object obj) {
+		try {
+			return objectMapper.writeValueAsString(obj);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+			// 실제 프로덕션 환경에서는 로깅 프레임워크를 사용하거나 적절한 예외 처리를 해야 합니다.
+			return null;
+		}
 	}
 
 }

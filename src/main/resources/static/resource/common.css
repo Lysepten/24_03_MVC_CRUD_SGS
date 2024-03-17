@@ -67,3 +67,14 @@ header>div>ul>li {
 	padding: 10px;
 	text-align: center;
 }
+
+/*네비게이션 2차메뉴 */
+header>div>ul>li>ul {
+	display: none;
+	position: absolute;
+	background-color: white;
+}
+
+header>div>ul>li:hover>ul {
+	display: block;
+}

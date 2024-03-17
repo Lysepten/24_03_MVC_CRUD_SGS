@@ -20,6 +20,7 @@
 							placeholder="내용을 입력해주세요" name="body" /></td>
 					</tr>
 
+
 					<tr>
 						<th></th>
 						<td><input class="btn btn-outline btn-info" type="submit" value="작성" /></td>
